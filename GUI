@@ -1,1 +1,375 @@
+package HojaDeTrabajo;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+public class Gui {
+
+	private JFrame frame;
+	private JLabel lblNewLabel = new JLabel("Radio Actual: FM");
+	private JLabel lblNewLabel_1 = new JLabel("Emisora Actual: 87.9");
+	private boolean guardar = false;
+	private int botonActual = 1;
+	Metodos metodos = new Metodos();
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Gui window = new Gui();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Gui() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JButton btnNewButton = new JButton("1");
+		btnNewButton.addActionListener(new MiListener());
+		btnNewButton.addActionListener(new MiListener1());
+
+		btnNewButton.setBounds(10, 63, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("2");
+		btnNewButton_1.addActionListener(new MiListener());
+		btnNewButton_1.addActionListener(new MiListener2());
+
+		btnNewButton_1.setBounds(118, 63, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("3");
+		btnNewButton_2.addActionListener(new MiListener());
+		btnNewButton_2.addActionListener(new MiListener3());
+
+		btnNewButton_2.setBounds(229, 63, 89, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("4");
+		btnNewButton_3.addActionListener(new MiListener());
+		btnNewButton_3.addActionListener(new MiListener4());
+
+		btnNewButton_3.setBounds(335, 63, 89, 23);
+		frame.getContentPane().add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("5");
+		btnNewButton_4.addActionListener(new MiListener());
+		btnNewButton_4.addActionListener(new MiListener5());
+
+		btnNewButton_4.setBounds(10, 111, 89, 23);
+		frame.getContentPane().add(btnNewButton_4);
+		
+		JButton btnNewButton_5 = new JButton("6");
+		btnNewButton_5.addActionListener(new MiListener());
+		btnNewButton_5.addActionListener(new MiListener6());
+
+		btnNewButton_5.setBounds(118, 111, 89, 23);
+		frame.getContentPane().add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("7");
+		btnNewButton_6.addActionListener(new MiListener());
+		btnNewButton_6.addActionListener(new MiListener7());
+
+		btnNewButton_6.setBounds(229, 111, 89, 23);
+		frame.getContentPane().add(btnNewButton_6);
+		
+		JButton btnNewButton_7 = new JButton("8");
+		btnNewButton_7.addActionListener(new MiListener());
+		btnNewButton_7.addActionListener(new MiListener8());
+
+		btnNewButton_7.setBounds(335, 111, 89, 23);
+		frame.getContentPane().add(btnNewButton_7);
+		
+		JButton btnNewButton_8 = new JButton("9");
+		btnNewButton_8.addActionListener(new MiListener());
+		btnNewButton_8.addActionListener(new MiListener9());
+
+		btnNewButton_8.setBounds(10, 157, 89, 23);
+		frame.getContentPane().add(btnNewButton_8);
+		
+		JButton btnNewButton_9 = new JButton("10");
+		btnNewButton_9.addActionListener(new MiListener());
+		btnNewButton_9.addActionListener(new MiListener10());
+
+		btnNewButton_9.setBounds(118, 157, 89, 23);
+		frame.getContentPane().add(btnNewButton_9);
+		
+		JButton btnNewButton_10 = new JButton("11");
+		btnNewButton_10.addActionListener(new MiListener());
+		btnNewButton_10.addActionListener(new MiListener11());
+
+		btnNewButton_10.setBounds(229, 157, 89, 23);
+		frame.getContentPane().add(btnNewButton_10);
+		
+		JButton btnNewButton_11 = new JButton("12");
+		btnNewButton_11.addActionListener(new MiListener());
+		btnNewButton_11.addActionListener(new MiListener12());
+		btnNewButton_11.setBounds(335, 157, 89, 23);
+		frame.getContentPane().add(btnNewButton_11);
+		
+		JButton btnNewButton_12 = new JButton("Avanzar");
+		btnNewButton_12.addActionListener(new MiListenerAvanzar());
+		btnNewButton_12.setBounds(229, 191, 89, 23);
+		frame.getContentPane().add(btnNewButton_12);
+		lblNewLabel.setBounds(20, 191, 98, 31);
+		frame.getContentPane().add(lblNewLabel);
+		
+		
+		lblNewLabel_1.setBounds(21, 233, 160, 14);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("RADIO EMISORA");
+		lblNewLabel_2.setBounds(177, 11, 89, 14);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JButton btnNewButton_13 = new JButton("Guardar");
+		btnNewButton_13.addActionListener(new MiListenerGuardar());
+		btnNewButton_13.setBounds(118, 191, 89, 23);
+		frame.getContentPane().add(btnNewButton_13);
+		
+		JLabel lblParaSeleccionarPresiona = new JLabel("Para seleccionar presione el bot\u00F3n de su emisora");
+		lblParaSeleccionarPresiona.setBounds(10, 36, 385, 14);
+		frame.getContentPane().add(lblParaSeleccionarPresiona);
+		
+		JLabel lblNewLabel_3 = new JLabel("Para guardar presione guardar y luego el bot\u00F3n donde desea guardar");
+		lblNewLabel_3.setBounds(10, 47, 339, 14);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		JButton btnNewButton_14 = new JButton("Cambiar");
+		btnNewButton_14.addActionListener(new MiListenerCambiar());
+		btnNewButton_14.setBounds(335, 191, 89, 23);
+		frame.getContentPane().add(btnNewButton_14);
+		
+		JButton btnNewButton_15 = new JButton("Apagar/Encender");
+		btnNewButton_15.addActionListener(new MiListenerEncender());
+		btnNewButton_15.setBounds(298, 229, 126, 23);
+		frame.getContentPane().add(btnNewButton_15);
+	}
+	
+	private class MiListener1 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 1;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener2 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 2;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener3 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 3;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener4 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 4;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener5 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 5;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener6 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 6;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener7 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 7;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener8 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 8;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener9 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 9;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener10 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 10;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener11 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 11;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener12 implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			botonActual = 12;
+			System.out.print(botonActual);
+		}
+	}
+	
+	private class MiListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			if(metodos.isEstado() == true) {
+				if(guardar == true) {
+					String mensaje = metodos.guardar(botonActual);
+					System.out.println(mensaje);
+					guardar = false;
+					double[] lista = metodos.getEmisoras();
+					for(double elemento : lista) {
+						System.out.println(elemento);
+					}
+				}
+				else {
+					String mensaje = metodos.seleccionar(botonActual);
+					System.out.println(mensaje);
+					if(metodos.isRadio() == true) {
+						lblNewLabel.setText("Radio Actual: AM");
+						lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraAM());
+					}
+					else {
+						lblNewLabel.setText("Radio Actual: FM");
+						lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraFM());
+					}
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Favor encender la radio");
+			}
+		}	
+	}
+	
+	private class MiListenerAvanzar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(metodos.isEstado() == true) {
+				double actual = metodos.avanzar();
+				lblNewLabel_1.setText("Emisora Actual: " + actual);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Favor encender la radio");
+			}
+		}
+	}
+	
+	private class MiListenerGuardar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(metodos.isEstado() == true) {
+				guardar = true;
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Favor encender la radio");
+			}
+		}	
+	}
+	
+	private class MiListenerCambiar implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(metodos.isEstado() == true) {
+				boolean Radio = metodos.amFm();
+				metodos.setRadio(Radio);
+				if(metodos.isRadio() == true) {
+					lblNewLabel.setText("Radio Actual: AM");
+					lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraAM());
+				}
+				else {
+					lblNewLabel.setText("Radio Actual: FM");
+					lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraFM());
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Favor encender la radio");
+			}
+		}
+	}
+	
+	private class MiListenerEncender implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			boolean nuevoEstado = metodos.encenderApagar();
+			metodos.setEstado(nuevoEstado);
+		}
+		
+	}
+}
 
