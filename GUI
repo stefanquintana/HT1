@@ -1,4 +1,11 @@
-package HojaDeTrabajo;
+/**
+ * @file Gui.java
+ * @author Stefan Quintana, Estuardo Menéndez
+ * @date 22/01/2021
+ */
+
+
+//imports//
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,15 +19,26 @@ import javax.swing.JOptionPane;
 
 public class Gui {
 
+	//Atributos//
+	
 	private JFrame frame;
 	private JLabel lblNewLabel = new JLabel("Radio Actual: FM");
 	private JLabel lblNewLabel_1 = new JLabel("Emisora Actual: 87.9");
 	private boolean guardar = false;
 	private int botonActual = 1;
-	Metodos metodos = new Metodos();
+	Radio metodos = new Radio();
+	
+	private boolean estado = false;
+	private boolean radio = false;
+	
+	private double[] listaEmisoras = new double[12];
+	
+	private double actualAM = 530;
+	private double actualFM = 87.9;
 
 	/**
 	 * Launch the application.
+	 * @param args
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -54,77 +72,66 @@ public class Gui {
 		JButton btnNewButton = new JButton("1");
 		btnNewButton.addActionListener(new MiListener());
 		btnNewButton.addActionListener(new MiListener1());
-
 		btnNewButton.setBounds(10, 63, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("2");
 		btnNewButton_1.addActionListener(new MiListener());
 		btnNewButton_1.addActionListener(new MiListener2());
-
 		btnNewButton_1.setBounds(118, 63, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("3");
 		btnNewButton_2.addActionListener(new MiListener());
 		btnNewButton_2.addActionListener(new MiListener3());
-
 		btnNewButton_2.setBounds(229, 63, 89, 23);
 		frame.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("4");
 		btnNewButton_3.addActionListener(new MiListener());
 		btnNewButton_3.addActionListener(new MiListener4());
-
 		btnNewButton_3.setBounds(335, 63, 89, 23);
 		frame.getContentPane().add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("5");
 		btnNewButton_4.addActionListener(new MiListener());
 		btnNewButton_4.addActionListener(new MiListener5());
-
 		btnNewButton_4.setBounds(10, 111, 89, 23);
 		frame.getContentPane().add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("6");
 		btnNewButton_5.addActionListener(new MiListener());
 		btnNewButton_5.addActionListener(new MiListener6());
-
 		btnNewButton_5.setBounds(118, 111, 89, 23);
 		frame.getContentPane().add(btnNewButton_5);
 		
 		JButton btnNewButton_6 = new JButton("7");
 		btnNewButton_6.addActionListener(new MiListener());
 		btnNewButton_6.addActionListener(new MiListener7());
-
 		btnNewButton_6.setBounds(229, 111, 89, 23);
 		frame.getContentPane().add(btnNewButton_6);
 		
 		JButton btnNewButton_7 = new JButton("8");
 		btnNewButton_7.addActionListener(new MiListener());
 		btnNewButton_7.addActionListener(new MiListener8());
-
 		btnNewButton_7.setBounds(335, 111, 89, 23);
 		frame.getContentPane().add(btnNewButton_7);
 		
 		JButton btnNewButton_8 = new JButton("9");
 		btnNewButton_8.addActionListener(new MiListener());
 		btnNewButton_8.addActionListener(new MiListener9());
-
 		btnNewButton_8.setBounds(10, 157, 89, 23);
 		frame.getContentPane().add(btnNewButton_8);
 		
 		JButton btnNewButton_9 = new JButton("10");
 		btnNewButton_9.addActionListener(new MiListener());
 		btnNewButton_9.addActionListener(new MiListener10());
-
 		btnNewButton_9.setBounds(118, 157, 89, 23);
 		frame.getContentPane().add(btnNewButton_9);
 		
 		JButton btnNewButton_10 = new JButton("11");
 		btnNewButton_10.addActionListener(new MiListener());
 		btnNewButton_10.addActionListener(new MiListener11());
-
 		btnNewButton_10.setBounds(229, 157, 89, 23);
 		frame.getContentPane().add(btnNewButton_10);
 		
@@ -175,135 +182,171 @@ public class Gui {
 	
 	private class MiListener1 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 1;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener2 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 2;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener3 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 3;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener4 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 4;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener5 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 5;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener6 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 6;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener7 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 7;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener8 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 8;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener9 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 9;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener10 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 10;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener11 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 11;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener12 implements ActionListener{
 		
+		/**
+		 * Método para cambiar el atributo al botón presionado
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			botonActual = 12;
-			System.out.print(botonActual);
 		}
 	}
 	
 	private class MiListener implements ActionListener{
-
+		
+		/**
+		 * Método que revisa si se quiere guardar y seleccionar.
+		 * En caso que se desee guardar lo guarda en la lista en la posición del botón en el cual desee guardarlo.
+		 * Si no desea guardar se busca en la lista y cambia la emisora.
+		 */
 		public void actionPerformed(ActionEvent e) {
-			if(metodos.isEstado() == true) {
+			if(estado == true) {
 				if(guardar == true) {
-					String mensaje = metodos.guardar(botonActual);
-					System.out.println(mensaje);
-					guardar = false;
-					double[] lista = metodos.getEmisoras();
-					for(double elemento : lista) {
-						System.out.println(elemento);
+					if(radio == false) {
+						listaEmisoras[botonActual -1] = actualFM;
 					}
+					else
+						if(radio == true) {
+							listaEmisoras[botonActual -1] = actualAM;
+						}
+					guardar = false;
 				}
 				else {
-					String mensaje = metodos.seleccionar(botonActual);
-					System.out.println(mensaje);
-					if(metodos.isRadio() == true) {
+					if(listaEmisoras[botonActual - 1]%10 != 0) {
+						radio = false;
+						actualFM = listaEmisoras[botonActual -1];
+					}
+					else {
+						radio = true;
+						actualAM = listaEmisoras[botonActual - 1];
+					}
+					if(radio == true) {
 						lblNewLabel.setText("Radio Actual: AM");
-						lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraAM());
+						lblNewLabel_1.setText("Emisora Actual: " + actualAM);
 					}
 					else {
 						lblNewLabel.setText("Radio Actual: FM");
-						lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraFM());
+						lblNewLabel_1.setText("Emisora Actual: " + actualFM);
 					}
 				}
 			}
@@ -315,10 +358,33 @@ public class Gui {
 	
 	private class MiListenerAvanzar implements ActionListener{
 		@Override
+		/**
+		 * Método para avanzar según la emisora actual.
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if(metodos.isEstado() == true) {
-				double actual = metodos.avanzar();
+			if(estado == true) {
+				double actual = 0;
+				if(radio == true) {
+					if(actualAM >= 530 && actualAM < 1610) {
+						actualAM = actualAM + 10;
+					}
+					else
+						if(actualAM == 1610) {
+							actualAM = 530;
+						}
+					actual = actualAM;
+				}
+				else {
+					if(actualFM >= 87.9 && actualFM < 107.9) {
+						actualFM = actualFM + 0.2;
+					}
+					else
+						if(actualFM == 107.9) {
+							actualFM = 87.9;
+						}
+					actual = actualFM;
+				}
 				lblNewLabel_1.setText("Emisora Actual: " + actual);
 			}
 			else {
@@ -329,9 +395,12 @@ public class Gui {
 	
 	private class MiListenerGuardar implements ActionListener{
 		@Override
+		/**
+		 * Método para cambiar el atributo de guardar
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if(metodos.isEstado() == true) {
+			if(estado == true) {
 				guardar = true;
 			}
 			else {
@@ -342,18 +411,20 @@ public class Gui {
 	
 	private class MiListenerCambiar implements ActionListener{
 		@Override
+		/**
+		 * Metodo para cambiar de emisora AM a FM o viceversa y cambiar la emisora de la radio
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if(metodos.isEstado() == true) {
-				boolean Radio = metodos.amFm();
-				metodos.setRadio(Radio);
-				if(metodos.isRadio() == true) {
+			if(estado == true) {
+				radio = metodos.amFm();
+				if(radio == true) {
 					lblNewLabel.setText("Radio Actual: AM");
-					lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraAM());
+					lblNewLabel_1.setText("Emisora Actual: " + actualAM);
 				}
 				else {
 					lblNewLabel.setText("Radio Actual: FM");
-					lblNewLabel_1.setText("Emisora Actual: " + metodos.getEmisoraFM());
+					lblNewLabel_1.setText("Emisora Actual: " + actualFM);
 				}
 			}
 			else {
@@ -364,10 +435,12 @@ public class Gui {
 	
 	private class MiListenerEncender implements ActionListener{
 		@Override
+		/**
+		 * Encender o apagar según el estado de la radio
+		 */
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			boolean nuevoEstado = metodos.encenderApagar();
-			metodos.setEstado(nuevoEstado);
+			estado = metodos.encenderApagar();
 		}
 		
 	}
