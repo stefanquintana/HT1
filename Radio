@@ -1,18 +1,22 @@
-package HojaDeTrabajo;
 /**
+ * @file Radio.java
  * @author Stefan Quintana, Estuardo Menéndez
+ * @date 22/01/2021
  *
  */
 
-public class Metodos implements Interface{
+public class Radio implements Interface{
 	
-	public boolean estado;
-	public boolean radio;
-	public double emisoraAM;
-	public double emisoraFM;
-	public double[] emisoras;
+	//Atributos//
 	
-	public Metodos() {
+	private boolean estado;
+	private boolean radio;
+	private double emisoraAM;
+	private double emisoraFM;
+	private double[] emisoras;
+	
+	//Constructor//
+	public Radio() {
 		estado = false;
 		radio = false;
 		emisoraAM = 530;
@@ -21,30 +25,39 @@ public class Metodos implements Interface{
 	}
 
 	@Override
+	/**
+	 * @return el estado contrario en el que se encuentra la radio.
+	 */
 	public boolean encenderApagar() {
 		// TODO Auto-generated method stub
 		if(estado == true) {
-			estado= false;
+			return false;
 		}
 		else {
-			estado= true;
+			return true;
 		}
-		return =estado
 	}
 
 	@Override
+	/**
+	 * Am se representa como true, Fm se representa como false
+	 * @return la emisora contraria en la que se encuentra la radio
+	 */
 	public boolean amFm() {
 		// TODO Auto-generated method stub
 		if(radio == true) {
-			radio= false;
+			return false;
 		}
 		else {
-			radio= true;
+			return true;
 		}
-		return =radio
 	}
 
 	@Override
+	/**
+	 * @param btn, parametro para guardar en un botón específico
+	 * @return mensaje de "Guardado con éxito"
+	 */
 	public String guardar(int btn) {
 		// TODO Auto-generated method stub
 		String mensaje = "";
@@ -60,6 +73,10 @@ public class Metodos implements Interface{
 	}
 
 	@Override
+	/**
+	 * @param btn, paramtero para escuchar la emisora guardada en ese boton
+	 * @return mensaje, mensaje que diga la emisora que se esta escuchando
+	 */
 	public String seleccionar(int btn) {
 		// TODO Auto-generated method stub
 		String mensaje = "";
@@ -77,10 +94,14 @@ public class Metodos implements Interface{
 	}
 
 	@Override
+	/**
+	 * Método para avanzar según está en AM o FM
+	 * @return la emisora a la cual se avanzó
+	 */
 	public double avanzar() {
 		// TODO Auto-generated method stub
 		if(radio == true) {
-			if(emisoraAM >= 530 && emisoraFM < 1610) {
+			if(emisoraAM >= 530 && emisoraAM < 1610) {
 				emisoraAM = emisoraAM + 10;
 			}
 			else
@@ -100,75 +121,4 @@ public class Metodos implements Interface{
 			return emisoraFM;
 		}
 	}
-	
-	/**
-	 * @return the estado
-	 */
-	public boolean isEstado() {
-		return estado;
-	}
-
-	/**
-	 * @param estado the estado to set
-	 */
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
-
-	/**
-	 * @return the radio
-	 */
-	public boolean isRadio() {
-		return radio;
-	}
-
-	/**
-	 * @param radio the radio to set
-	 */
-	public void setRadio(boolean radio) {
-		this.radio = radio;
-	}
-
-	/**
-	 * @return the emisoraAM
-	 */
-	public double getEmisoraAM() {
-		return emisoraAM;
-	}
-
-	/**
-	 * @param emisoraAM the emisoraAM to set
-	 */
-	public void setEmisoraAM(double emisoraAM) {
-		this.emisoraAM = emisoraAM;
-	}
-
-	/**
-	 * @return the emisoraFM
-	 */
-	public double getEmisoraFM() {
-		return emisoraFM;
-	}
-
-	/**
-	 * @param emisoraFM the emisoraFM to set
-	 */
-	public void setEmisoraFM(double emisoraFM) {
-		this.emisoraFM = emisoraFM;
-	}
-
-	/**
-	 * @return the emisoras
-	 */
-	public double[] getEmisoras() {
-		return emisoras;
-	}
-
-	/**
-	 * @param emisoras the emisoras to set
-	 */
-	public void setEmisoras(double[] emisoras) {
-		this.emisoras = emisoras;
-	}
-	
 }
