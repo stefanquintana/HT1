@@ -1,1 +1,174 @@
+package HojaDeTrabajo;
+/**
+ * @author Stefan Quintana, Estuardo Menéndez
+ *
+ */
 
+public class Metodos implements Interface{
+	
+	public boolean estado;
+	public boolean radio;
+	public double emisoraAM;
+	public double emisoraFM;
+	public double[] emisoras;
+	
+	public Metodos() {
+		estado = false;
+		radio = false;
+		emisoraAM = 530;
+		emisoraFM = 87.9;
+		emisoras = new double[12];
+	}
+
+	@Override
+	public boolean encenderApagar() {
+		// TODO Auto-generated method stub
+		if(estado == true) {
+			estado= false;
+		}
+		else {
+			estado= true;
+		}
+		return =estado
+	}
+
+	@Override
+	public boolean amFm() {
+		// TODO Auto-generated method stub
+		if(radio == true) {
+			radio= false;
+		}
+		else {
+			radio= true;
+		}
+		return =radio
+	}
+
+	@Override
+	public String guardar(int btn) {
+		// TODO Auto-generated method stub
+		String mensaje = "";
+		if(radio == false) {
+			emisoras[btn -1] = emisoraFM;
+		}
+		else
+			if(radio == true) {
+				emisoras[btn -1] = emisoraAM;
+			}
+		mensaje = "Guardado con éxito";
+		return mensaje;
+	}
+
+	@Override
+	public String seleccionar(int btn) {
+		// TODO Auto-generated method stub
+		String mensaje = "";
+		if(emisoras[btn - 1]%10 != 0) {
+			radio = false;
+			emisoraFM = emisoras[btn -1];
+			mensaje = "Emisora: " + emisoraFM;
+		}
+		else {
+			radio = true;
+			emisoraAM = emisoras[btn - 1];
+			mensaje = "Emisora: " + emisoraAM;
+		}
+		return mensaje;
+	}
+
+	@Override
+	public double avanzar() {
+		// TODO Auto-generated method stub
+		if(radio == true) {
+			if(emisoraAM >= 530 && emisoraFM < 1610) {
+				emisoraAM = emisoraAM + 10;
+			}
+			else
+				if(emisoraAM == 1610) {
+					emisoraAM = 530;
+				}
+			return emisoraAM;
+		}
+		else {
+			if(emisoraFM >= 87.9 && emisoraFM < 107.9) {
+				emisoraFM = emisoraFM + 0.2;
+			}
+			else
+				if(emisoraFM == 107.9) {
+					emisoraFM = 87.9;
+				}
+			return emisoraFM;
+		}
+	}
+	
+	/**
+	 * @return the estado
+	 */
+	public boolean isEstado() {
+		return estado;
+	}
+
+	/**
+	 * @param estado the estado to set
+	 */
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
+	/**
+	 * @return the radio
+	 */
+	public boolean isRadio() {
+		return radio;
+	}
+
+	/**
+	 * @param radio the radio to set
+	 */
+	public void setRadio(boolean radio) {
+		this.radio = radio;
+	}
+
+	/**
+	 * @return the emisoraAM
+	 */
+	public double getEmisoraAM() {
+		return emisoraAM;
+	}
+
+	/**
+	 * @param emisoraAM the emisoraAM to set
+	 */
+	public void setEmisoraAM(double emisoraAM) {
+		this.emisoraAM = emisoraAM;
+	}
+
+	/**
+	 * @return the emisoraFM
+	 */
+	public double getEmisoraFM() {
+		return emisoraFM;
+	}
+
+	/**
+	 * @param emisoraFM the emisoraFM to set
+	 */
+	public void setEmisoraFM(double emisoraFM) {
+		this.emisoraFM = emisoraFM;
+	}
+
+	/**
+	 * @return the emisoras
+	 */
+	public double[] getEmisoras() {
+		return emisoras;
+	}
+
+	/**
+	 * @param emisoras the emisoras to set
+	 */
+	public void setEmisoras(double[] emisoras) {
+		this.emisoras = emisoras;
+	}
+	
+}
